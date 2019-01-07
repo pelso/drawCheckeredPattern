@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="drawCheckeredPattern">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>JS Bin</title>
+</head>
+<body>
+<canvas id="myCanvas" width="450" height="300" style="border: 1px solid black"></canvas>
+<script>
+	var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+
+var canvasWidth = 450;
+var canvasHeight = 300;
+
+  var xPosition = 0;
+  var yPosition = 0;
+
+function drawCheckeredPattern(row,col) { 
+
+  var squareWidth = canvasWidth / col;
+  var squareHeight = canvasHeight / row;
+
+for (var m = 1; m < row + 1; m++) {
+  
+  for (var i = 1; i < col + 1; i++) {
+    
+    if (i % 2 !== 0) { 
+      context.beginPath();
+      context.moveTo(xPosition, yPosition);
+      context.lineTo(xPosition + squareWidth, yPosition);
+      context.lineTo(xPosition + squareWidth, yPosition + squareHeight);
+      context.lineTo(xPosition, yPosition + squareHeight);
+      context.lineTo(xPosition, yPosition);
+      context.fillStyle = 'white';
+      context.fill();
+      
+    } else {
+      context.beginPath();
+      context.moveTo(xPosition, yPosition);
+      context.lineTo(xPosition + squareWidth, yPosition);
+      context.lineTo(xPosition + squareWidth, yPosition + squareHeight);
+      context.lineTo(xPosition, yPosition + squareHeight);
+      context.lineTo(xPosition, yPosition);
+      context.fillStyle = 'black';
+      context.fill();
+      
+    }
+    
+      xPosition = xPosition + squareWidth;
+  }
+     
+      yPosition = yPosition + squareHeight;
+  
+  if (m % 2 !== 0) {
+      xPosition = 0 - squareWidth;
+} else {
+  xPosition = 0;
+}
+
+}
+
+
+}
+
+drawCheckeredPattern(6,6);
+
+
+
+
+	
+	
+	</script>
+</body>
+</html>
