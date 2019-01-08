@@ -1,0 +1,1 @@
+Drawing Checkered Pattern on canvas using javascript.
